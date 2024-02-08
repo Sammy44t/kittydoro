@@ -1,32 +1,32 @@
 let timer;
 let seconds = 1500; // 25 minutes
 let curMinute = 25;
-let currency = 100;
+let currency = 0;
 let breakCount = 0;
 let pomodoroCount = 0;
 let isBreak = false;
 
 // Array containing all possible cat icons
 const catImages = [
-  'defaultCat.jpg',
-  'boxCat.jpg',
-  'murderCat.jpg',
-  'cinqueCat.png',
-  'donaldCat.png',
-  'leonCat1.png',
-  'leonCat2.png',
-  'samCat.png',
-  'teresaCat.jpg',
-  'kuyaCat.jpg',
-  'lindsayCat1.jpg',
-  'lindsayCat2.jpg',
-  'lindsayCat3.jpg',
-  'michaelCat.jpg',
+  'assets/defaultCat.jpg',
+  'assets/boxCat.jpg',
+  'assets/murderCat.jpg',
+  'assets/cinqueCat.png',
+  'assets/donaldCat.png',
+  'assets/leonCat1.png',
+  'assets/leonCat2.png',
+  'assets/samCat.png',
+  'assets/teresaCat.jpg',
+  'assets/kuyaCat.jpg',
+  'assets/lindsayCat1.jpg',
+  'assets/lindsayCat2.jpg',
+  'assets/lindsayCat3.jpg',
+  'assets/michaelCat.jpg',
 ];
 
 // Array containing user's unlocked cat icons
 const ownedCats = [
-  'defaultCat.jpg'
+  'assets/defaultCat.jpg'
 ];
 
 // Updates the timer using the seconds variable
@@ -155,7 +155,11 @@ function getRandomCatImage() {
 // Simulates rolling a gacha to get a new cat
 function rollGacha() {
   if (currency >= 25) {
-    let selectedImage = getRandomCatImage();
+    let selectedImage;
+    do {
+      selectedImage = getRandomCatImage();
+    } while (ownedCats.includes(selectedImage));
+    
     ownedCats.push(selectedImage);
     currency -= 25;
     updateCurrencyDisplay();
@@ -164,6 +168,7 @@ function rollGacha() {
     showPopup('Not enough currency. Keep studying to earn more!');
   }
 }
+
 
 // Open cat inventory modal and display all owned cats
 function openInventory() {
