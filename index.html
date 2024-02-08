@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kittydoro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="popupMessage" class="popup">
+    <span class="popup-content" id="popupText"></span>
+    <button onclick="closePopup()">OK</button>
+  </div>
+  <div class="hotbar">
+    <div id="currency">Currency: 0</div>
+    <img src="./logo.png" alt="logo">
+    <div class="gachaContainer">
+      <button id="rollBtn">Roll</button>
+      <button id="inventoryBtn">Inventory</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="timerAndButtonsContainer">
+      <div id="logoAndTimer" class="flex-container">
+        <div id="timer">25:00</div>
+      </div>
+      <div id="buttonContainer" class="flex-container">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" style="display: none;">Stop</button>
+        <button id="resetBtn" style="display: none;">Reset</button>
+      </div>
+    </div>
+    <div class="currentCat">
+      <img id="selectedImage" src="defaultCat.jpg" alt="Selected Cat">
+    </div>
+  </div>
+  <div id="inventoryModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Inventory</h2>
+      <div id="catList"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
