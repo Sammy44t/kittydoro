@@ -60,37 +60,39 @@ function startTimer() {
         pomodoroCount++;
         if (pomodoroCount % 4 === 0) {
           // Take a longer break after every 4 Pomodoros
-          showPopup('Time to take a long break.');
           seconds = 900; // 15 minutes
           curMinute = 15;
+          updateTimerDisplay();
           breakCount++
           isBreak = true;
           // Update button visibility
           document.getElementById('startBtn').style.display = 'inline';
           document.getElementById('stopBtn').style.display = 'none';
           document.getElementById('resetBtn').style.display = 'none';
+          showPopup('Time to take a long break.');
         } else if (breakCount == 4) {
-          showPopup('Time to get back to studying.');
           seconds = 1500;
           curMinute = 25;
+          updateTimerDisplay();
           breakCount = 0;
           isBreak = false;
           document.getElementById('startBtn').style.display = 'inline';
           document.getElementById('stopBtn').style.display = 'none';
           document.getElementById('resetBtn').style.display = 'none';
+          showPopup('Time to get back to studying.');
         } else {
           // Take a short break
-          showPopup('Time to take a short break.');
           seconds = 300; // 5 minutes
           curMinute = 5;
+          updateTimerDisplay();
           breakCount++;
           isBreak = true;
           // Update button visibility
           document.getElementById('startBtn').style.display = 'inline';
           document.getElementById('stopBtn').style.display = 'none';
           document.getElementById('resetBtn').style.display = 'none';
+          showPopup('Time to take a short break.');
         }
-        updateTimerDisplay();
       }
   }, 1000);
   
