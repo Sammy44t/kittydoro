@@ -175,3 +175,21 @@ body {
     height: auto;
   }
   
+  /* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .hotbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  #buttonContainer button {
+    margin: 5px;
+  }
+}
