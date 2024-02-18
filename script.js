@@ -216,7 +216,6 @@ function closeInventory() {
   modal.style.display = 'none';
 }
 
-
 document.getElementById('startBtn').addEventListener('click', startTimer);
 document.getElementById('stopBtn').addEventListener('click', stopTimer);
 document.getElementById('resetBtn').addEventListener('click', resetTimer);
