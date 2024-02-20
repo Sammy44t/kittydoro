@@ -80,7 +80,7 @@ body {
     order: 1;
     font-size: 2em;
     position: fixed;
-    bottom: 190px;
+    bottom: 10px;
     background-color: #fff;
     z-index: 2;
   }

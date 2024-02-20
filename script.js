@@ -70,7 +70,7 @@ function startTimer() {
           document.getElementById('stopBtn').style.display = 'none';
           document.getElementById('resetBtn').style.display = 'none';
           showPopup('Time to take a long break.');
-        } else if (breakCount == 4) {
+        } else if (pomodoroCount % 2 === 0) {
           seconds = 1500;
           curMinute = 25;
           updateTimerDisplay();
@@ -125,6 +125,7 @@ function closePopup() {
 // Reset timer to 25 minutes
 function resetTimer() {
   clearInterval(timer);
+  pomodoroCount--;
   curMinute = 25;
   seconds = 1500;
   updateTimerDisplay();
