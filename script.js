@@ -217,6 +217,16 @@ function closeInventory() {
   modal.style.display = 'none';
 }
 
+// Toggle sidebar function
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('closed');
+  
+  // Update the arrow direction
+  const toggleBtn = document.getElementById('toggleSidebarBtn');
+}
+
+document.getElementById('toggleSidebarBtn').addEventListener('click', toggleSidebar);
 document.getElementById('startBtn').addEventListener('click', startTimer);
 document.getElementById('stopBtn').addEventListener('click', stopTimer);
 document.getElementById('resetBtn').addEventListener('click', resetTimer);

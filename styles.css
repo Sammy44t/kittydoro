@@ -107,8 +107,8 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  
-  #startBtn, #stopBtn, #resetBtn, #rollBtn, #inventoryBtn {
+
+  #startBtn, #stopBtn, #resetBtn, #rollBtn, #inventoryBtn, #applySettingsBtn {
     font-size: 1em;
     margin: 5px;
     padding: 10px 15px;
@@ -130,7 +130,7 @@ body {
     transform: scale(1.1);
   }
 
-  #startBtn:hover, #stopBtn:hover, #resetBtn:hover, #rollBtn:hover, #inventoryBtn:hover {
+  #startBtn:hover, #stopBtn:hover, #resetBtn:hover, #rollBtn:hover, #inventoryBtn:hover, #applySettingsBtn:hover {
     background-color: rgb(169, 179, 179);
   }
   
@@ -185,50 +185,45 @@ body {
 .sidebar {
   position: fixed;
   left: 0;
-  top: 0;
-  width: 250px;
-  height: 100%;
+  top: 25%;
+  width: 210px;
   background-color: #f4f4f4;
   padding: 15px;
+  padding-right: 35px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   z-index: 3;
-  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
 }
 
-.sidebar h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+/* Add sliding effect for hidden state */
+.sidebar.closed {
+  transform: translateX(-220px);
 }
 
-.sidebar label {
-  display: block;
-  margin-top: 10px;
-  font-size: 1em;
-  color: #333;
-}
-
-.sidebar input {
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.sidebar button {
-  width: 100%;
-  padding: 10px;
+/* Arrow button to slide sidebar */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  width: 35px;
+  height: 35px;
   background-color: #869696;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1em;
+  font-size: 20px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.sidebar button:hover {
+.arrow-btn:hover {
   background-color: rgb(169, 179, 179);
+}
+
+/* Rotating the arrow when sidebar is closed */
+.sidebar.closed .arrow-btn {
+  transform: translateY(-50%) rotate(180deg);
 }
