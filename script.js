@@ -36,9 +36,9 @@ const ownedCats = [
 
 // Function to update the timer based on user input
 function applySettings() {
-  studyTime = parseInt(document.getElementById('studyTimeInput').value) || 25;
-  shortBreakTime = parseInt(document.getElementById('shortBreakTimeInput').value) || 5;
-  longBreakTime = parseInt(document.getElementById('longBreakTimeInput').value) || 15;
+  studyTime = parseInt(document.getElementById('studyTimeInput').value) || studyTime;
+  shortBreakTime = parseInt(document.getElementById('shortBreakTimeInput').value) || shortBreakTime;
+  longBreakTime = parseInt(document.getElementById('longBreakTimeInput').value) || longBreakTime;
   resetTimer();
 }
 
@@ -72,8 +72,13 @@ function startTimer() {
       updateCurrencyDisplay();
     } else if (seconds < 0) {
       clearInterval(timer);
-      pomodoroCount++;
 
+      document.getElementById('startBtn').style.display = 'inline';
+      document.getElementById('stopBtn').style.display = 'none';
+      document.getElementById('resetBtn').style.display = 'none';
+
+      pomodoroCount++;
+      console.log(pomodoroCount);
       if (pomodoroCount % 4 === 0) {
         // Take a longer break after every 4 Pomodoros
         seconds = longBreakTime * 60;
@@ -127,12 +132,27 @@ function closePopup() {
   document.getElementById('overlay').style.display = 'none';
 }
 
-// Reset timer
+// Reset timer based on the current phase (study, short break, or long break)
 function resetTimer() {
   clearInterval(timer);
-  seconds = studyTime * 60;
-  curMinute = studyTime;
-  pomodoroCount--;
+
+  // Check if it's a break or study session
+  if (isBreak) {
+    if (breakCount === 1) {
+      // Short break reset
+      seconds = shortBreakTime * 60;
+      curMinute = shortBreakTime;
+    } else {
+      // Long break reset
+      seconds = longBreakTime * 60;
+      curMinute = longBreakTime;
+    }
+  } else {
+    // Study time reset
+    seconds = studyTime * 60;
+    curMinute = studyTime;
+  }
+
   updateTimerDisplay();
   document.getElementById('startBtn').style.display = 'inline';
   document.getElementById('stopBtn').style.display = 'none';
